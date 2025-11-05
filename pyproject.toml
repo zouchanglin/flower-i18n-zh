@@ -42,10 +42,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/flower-i18n"
-Documentation = "https://github.com/yourusername/flower-i18n#readme"
-Repository = "https://github.com/yourusername/flower-i18n.git"
-"Bug Tracker" = "https://github.com/yourusername/flower-i18n/issues"
+Homepage = "https://github.com/zouchanglin/flower-i18n-zh"
+Documentation = "https://github.com/zouchanglin/flower-i18n-zh#readme"
+Repository = "https://github.com/zouchanglin/flower-i18n-zh.git"
+"Bug Tracker" = "https://github.com/zouchanglin/flower-i18n-zh/issues"
 
 [project.scripts]
 flower-i18n-patch = "flower_i18n.patcher:patch_flower"
