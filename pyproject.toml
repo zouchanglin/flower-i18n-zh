@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flower-i18n"
-version = "0.1.1"
+version = "0.1.2"
 description = "Internationalization (i18n) support for Flower Celery monitoring tool"
 readme = "README.md"
 requires-python = ">=3.8"
