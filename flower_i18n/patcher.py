@@ -107,6 +107,180 @@ class FlowerTemplatePatcher:
         print("✓ Patched navbar.html")
         return True
 
+    def patch_broker_template(self):
+        """Patch broker.html to add data-i18n attributes"""
+        broker_template = self.templates_path / "broker.html"
+
+        if not broker_template.exists():
+            print(f"✗ broker.html not found at {broker_template}")
+            return False
+
+        with open(broker_template, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if 'data-i18n=' in content:
+            print("✓ broker.html already patched")
+            return True
+
+        # Add data-i18n attributes to table headers
+        replacements = {
+            '<th>Queue</th>': '<th data-i18n="broker.queue">Queue</th>',
+            '<th>Messages</th>': '<th data-i18n="broker.messages">Messages</th>',
+            '<th>Unacked</th>': '<th data-i18n="broker.unacked">Unacked</th>',
+            '<th>Ready</th>': '<th data-i18n="broker.ready">Ready</th>',
+            '<th>Consumers</th>': '<th data-i18n="broker.consumers">Consumers</th>',
+            '<th>Idle since</th>': '<th data-i18n="broker.idle_since">Idle since</th>',
+        }
+
+        for old, new in replacements.items():
+            content = content.replace(old, new)
+
+        with open(broker_template, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        print("✓ Patched broker.html")
+        return True
+
+    def patch_workers_template(self):
+        """Patch workers.html to add data-i18n attributes"""
+        workers_template = self.templates_path / "workers.html"
+
+        if not workers_template.exists():
+            print(f"✗ workers.html not found at {workers_template}")
+            return False
+
+        with open(workers_template, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if 'data-i18n=' in content:
+            print("✓ workers.html already patched")
+            return True
+
+        # Add data-i18n attributes to table headers
+        replacements = {
+            '<th>Worker</th>': '<th data-i18n="workers.worker">Worker</th>',
+            '<th class="text-center">Status</th>': '<th class="text-center" data-i18n="workers.status">Status</th>',
+            '<th class="text-center">Active</th>': '<th class="text-center" data-i18n="workers.active">Active</th>',
+            '<th class="text-center">Processed</th>': '<th class="text-center" data-i18n="workers.processed">Processed</th>',
+            '<th class="text-center">Failed</th>': '<th class="text-center" data-i18n="workers.failed">Failed</th>',
+            '<th class="text-center">Succeeded</th>': '<th class="text-center" data-i18n="workers.succeeded">Succeeded</th>',
+            '<th class="text-center">Retried</th>': '<th class="text-center" data-i18n="workers.retried">Retried</th>',
+            '<th class="text-center">Load Average</th>': '<th class="text-center" data-i18n="workers.load_average">Load Average</th>',
+            '<th>Total</th>': '<th data-i18n="common.total">Total</th>',
+        }
+
+        for old, new in replacements.items():
+            content = content.replace(old, new)
+
+        with open(workers_template, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        print("✓ Patched workers.html")
+        return True
+
+    def patch_tasks_template(self):
+        """Patch tasks.html to add data-i18n attributes"""
+        tasks_template = self.templates_path / "tasks.html"
+
+        if not tasks_template.exists():
+            print(f"✗ tasks.html not found at {tasks_template}")
+            return False
+
+        with open(tasks_template, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if 'data-i18n=' in content:
+            print("✓ tasks.html already patched")
+            return True
+
+        # Add data-i18n attributes to table headers
+        replacements = {
+            '<th>Name</th>': '<th data-i18n="tasks.name">Name</th>',
+            '<th>UUID</th>': '<th data-i18n="tasks.uuid">UUID</th>',
+            '<th class="text-center">State</th>': '<th class="text-center" data-i18n="tasks.state">State</th>',
+            '<th>args</th>': '<th data-i18n="tasks.args">args</th>',
+            '<th>kwargs</th>': '<th data-i18n="tasks.kwargs">kwargs</th>',
+            '<th>Result</th>': '<th data-i18n="tasks.result">Result</th>',
+            '<th class="text-center">Received</th>': '<th class="text-center" data-i18n="tasks.received">Received</th>',
+            '<th class="text-center">Started</th>': '<th class="text-center" data-i18n="tasks.started">Started</th>',
+            '<th class="text-center">Runtime</th>': '<th class="text-center" data-i18n="tasks.runtime">Runtime</th>',
+            '<th>Worker</th>': '<th data-i18n="tasks.worker">Worker</th>',
+            '<th>Exchange</th>': '<th data-i18n="tasks.exchange">Exchange</th>',
+            '<th>Routing Key</th>': '<th data-i18n="tasks.routing_key">Routing Key</th>',
+            '<th class="text-center">Retries</th>': '<th class="text-center" data-i18n="tasks.retries">Retries</th>',
+            '<th class="text-center">Revoked</th>': '<th class="text-center" data-i18n="tasks.revoked">Revoked</th>',
+            '<th>Exception</th>': '<th data-i18n="tasks.exception">Exception</th>',
+            '<th class="text-center">Expires</th>': '<th class="text-center" data-i18n="tasks.expires">Expires</th>',
+            '<th class="text-center">ETA</th>': '<th class="text-center" data-i18n="tasks.eta">ETA</th>',
+        }
+
+        for old, new in replacements.items():
+            content = content.replace(old, new)
+
+        with open(tasks_template, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        print("✓ Patched tasks.html")
+        return True
+
+    def patch_worker_template(self):
+        """Patch worker.html to add data-i18n attributes"""
+        worker_template = self.templates_path / "worker.html"
+
+        if not worker_template.exists():
+            print(f"✗ worker.html not found at {worker_template}")
+            return False
+
+        with open(worker_template, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if 'data-i18n=' in content:
+            print("✓ worker.html already patched")
+            return True
+
+        # Add data-i18n attributes
+        replacements = {
+            # Tab titles
+            'aria-selected="true">Pool</a>': 'aria-selected="true" data-i18n="worker.pool">Pool</a>',
+            'aria-selected="false">Broker</a>': 'aria-selected="false" data-i18n="worker.broker">Broker</a>',
+            'aria-selected="false">Queues</a>': 'aria-selected="false" data-i18n="worker.queues">Queues</a>',
+            'aria-selected="false">Tasks</a>': 'aria-selected="false" data-i18n="worker.tasks">Tasks</a>',
+            'aria-selected="false">Limits</a>': 'aria-selected="false" data-i18n="worker.limits">Limits</a>',
+            'aria-selected="false">Config</a>': 'aria-selected="false" data-i18n="worker.config">Config</a>',
+            'aria-selected="false">System</a>': 'aria-selected="false" data-i18n="worker.system">System</a>',
+            'aria-selected="false">Other</a>': 'aria-selected="false" data-i18n="worker.other">Other</a>',
+            # Dropdown actions
+            '>Shut Down</a>': ' data-i18n="worker.shutdown">Shut Down</a>',
+            '>Restart Pool</a>': ' data-i18n="worker.restart_pool">Restart Pool</a>',
+            'data-bs-dismiss="dropdown">Refresh</a>': 'data-bs-dismiss="dropdown" data-i18n="worker.refresh">Refresh</a>',
+            'data-bs-dismiss="dropdown">Refresh All</a>': 'data-bs-dismiss="dropdown" data-i18n="worker.refresh_all">Refresh All</a>',
+            # Captions and legends
+            '<caption>Worker pool options</caption>': '<caption data-i18n="worker.pool_options">Worker pool options</caption>',
+            '<caption>Broker options</caption>': '<caption data-i18n="worker.broker_options">Broker options</caption>',
+            '<caption>Configuration options</caption>': '<caption data-i18n="worker.config_options">Configuration options</caption>',
+            '<caption>System usage statistics</caption>': '<caption data-i18n="worker.system_stats">System usage statistics</caption>',
+            '<caption>Other statistics</caption>': '<caption data-i18n="worker.other_stats">Other statistics</caption>',
+            '<legend class="form-label mt-md-5">Pool size control</legend>': '<legend class="form-label mt-md-5" data-i18n="worker.pool_size_control">Pool size control</legend>',
+            # Labels and buttons
+            '<label for="pool-size" class="col-sm-2 col-form-label text-nowrap">Pool size</label>': '<label for="pool-size" class="col-sm-2 col-form-label text-nowrap" data-i18n="worker.pool_size">Pool size</label>',
+            '>Grow</button>': ' data-i18n="worker.grow">Grow</button>',
+            '>Shrink</button>': ' data-i18n="worker.shrink">Shrink</button>',
+            '<label for="min-autoscale" class="col-sm-2 form-label text-nowrap">Auto scale</label>': '<label for="min-autoscale" class="col-sm-2 form-label text-nowrap" data-i18n="worker.auto_scale">Auto scale</label>',
+            # Table cells
+            '<td>Worker PID</td>': '<td data-i18n="worker.worker_pid">Worker PID</td>',
+            '<td>Prefetch Count</td>': '<td data-i18n="worker.prefetch_count">Prefetch Count</td>',
+            '<th>Queue arguments</th>': '<th data-i18n="worker.queue_arguments">Queue arguments</th>',
+        }
+
+        for old, new in replacements.items():
+            content = content.replace(old, new)
+
+        with open(worker_template, 'w', encoding='utf-8') as f:
+            f.write(content)
+
+        print("✓ Patched worker.html")
+        return True
+
     def copy_static_files(self):
         """Copy i18n static files to Flower's static directory"""
         src_js = Path(__file__).parent / "static" / "js" / "i18n.js"
@@ -129,12 +303,15 @@ class FlowerTemplatePatcher:
         # Apply patches
         self.patch_base_template()
         self.patch_navbar_template()
+        self.patch_broker_template()
+        self.patch_workers_template()
+        self.patch_tasks_template()
+        self.patch_worker_template()
         self.copy_static_files()
 
         print("\n✓ Patching complete!")
-        print("\nTo apply i18n to your Flower handlers, add this to your code:")
-        print("  from flower_i18n import I18nHandler, setup_i18n")
-        print("  # Make your handlers inherit from I18nHandler")
+        print("\nNow restart Flower and open it in your browser.")
+        print("You should see a language switcher in the navigation bar.")
 
     def unpatch(self):
         """Remove all patches"""
