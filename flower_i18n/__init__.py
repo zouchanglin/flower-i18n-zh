@@ -2,7 +2,7 @@
 Flower i18n - Internationalization support for Flower Celery monitoring tool
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "邹长林 (Zou Changlin)"
 __email__ = "zchanglin@163.com"
 

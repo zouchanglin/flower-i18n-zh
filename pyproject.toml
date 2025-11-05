@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flower-i18n"
-version = "0.1.0"
+version = "0.1.1"
 description = "Internationalization (i18n) support for Flower Celery monitoring tool"
 readme = "README.md"
 requires-python = ">=3.8"
@@ -42,10 +42,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/zouchanglin/flower-i18n-zh"
-Documentation = "https://github.com/zouchanglin/flower-i18n-zh#readme"
-Repository = "https://github.com/zouchanglin/flower-i18n-zh.git"
-"Bug Tracker" = "https://github.com/zouchanglin/flower-i18n-zh/issues"
+Homepage = "https://github.com/zouchanglin/flower-i18n"
+Documentation = "https://github.com/zouchanglin/flower-i18n#readme"
+Repository = "https://github.com/zouchanglin/flower-i18n.git"
+"Bug Tracker" = "https://github.com/zouchanglin/flower-i18n/issues"
 
 [project.scripts]
 flower-i18n-patch = "flower_i18n.patcher:patch_flower"

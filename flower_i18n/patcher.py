@@ -71,7 +71,7 @@ class FlowerTemplatePatcher:
         return True
 
     def patch_navbar_template(self):
-        """Patch navbar.html to use translation keys"""
+        """Patch navbar.html to add data attributes for i18n"""
         navbar_template = self.templates_path / "navbar.html"
 
         if not navbar_template.exists():
@@ -82,16 +82,20 @@ class FlowerTemplatePatcher:
             content = f.read()
 
         # Check if already patched
-        if '_(\'nav.workers\')' in content:
+        if 'data-i18n=' in content:
             print("✓ navbar.html already patched")
             return True
 
-        # Replace text with translation function calls
+        # Add data-i18n attributes to navigation items
         replacements = {
-            '>Workers</a>': '>{{ _(\'nav.workers\') }}</a>',
-            '>Tasks</a>': '>{{ _(\'nav.tasks\') }}</a>',
-            '>Broker</a>': '>{{ _(\'nav.broker\') }}</a>',
-            '>Documentation</a>': '>{{ _(\'nav.documentation\') }}</a>',
+            'href="{{ reverse_url(\'workers\') }}">Workers</a>':
+                'href="{{ reverse_url(\'workers\') }}" data-i18n="nav.workers">Workers</a>',
+            'href="{{ reverse_url(\'tasks\') }}">Tasks</a>':
+                'href="{{ reverse_url(\'tasks\') }}" data-i18n="nav.tasks">Tasks</a>',
+            'href="{{ reverse_url(\'broker\') }}">Broker</a>':
+                'href="{{ reverse_url(\'broker\') }}" data-i18n="nav.broker">Broker</a>',
+            'href="https://flower.readthedocs.io/" target="_blank" rel="noopener">Documentation</a>':
+                'href="https://flower.readthedocs.io/" target="_blank" rel="noopener" data-i18n="nav.documentation">Documentation</a>',
         }
 
         for old, new in replacements.items():
