@@ -4,6 +4,7 @@
 
 [English](#english) | [中文](#chinese)
 
+![](screenshot-01.png)
 ---
 
 <a name="chinese"></a>
